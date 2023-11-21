@@ -2,6 +2,9 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ExampleController;
+use App\Http\Controllers\CarController;
+use App\Http\Controllers\NewsController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -21,7 +24,16 @@ Route::get('test', function () {
     return 'Welcome To My First Route';
 });
 
+//....................DAY 4 TASK......................................
+Route::get("news",[NewsController::class,'index']);
+Route::post("news",[NewsController::class,'store'])->name('news');
+Route::get('news',function () {
+    return view('news');
+});
 
+
+//....................day 4 practice.....................................
+Route::get('addcar',[CarController::class, 'store']);
 //DAY 3 TASK
 Route::post("addCar",[ExampleController::class,'getData']);
 Route::view("addCar","addCar");
