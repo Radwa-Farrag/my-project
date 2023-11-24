@@ -24,7 +24,10 @@ Route::get('test', function () {
     return 'Welcome To My First Route';
 });
 
-//....................DAY 4 TASK......................................
+//.................................day 5 practice....................................
+Route::get('cars',[CarController::class,'index']);
+
+//.................................DAY 4 TASK........................................
 Route::get("news",[NewsController::class,'index']);
 Route::post("news",[NewsController::class,'store'])->name('news');
 Route::get('news',function () {
@@ -32,7 +35,7 @@ Route::get('news',function () {
 });
 
 
-//....................day 4 practice.....................................
+//.................................day 4 practice.....................................
 Route::get('addcar',[CarController::class, 'store']);
 //DAY 3 TASK
 Route::post("addCar",[ExampleController::class,'getData']);
@@ -46,7 +49,7 @@ Route::POST('receive',function () {
 })->name('receive');*/
 
 
-// day3 practice
+//.................................... day3 practice......................
 Route::fallback(function () {
     return redirect('/');
 });
@@ -65,7 +68,7 @@ Route::POST('receive',function () {
 Route::get('test1',[ExampleController::class,'test1']);
 
 
-// day2 Task
+//.................................... Day 2 Task.................................
 Route::prefix('homepage')->group (function () {
     Route::get('/', function () {
      return 'Welcome To Home Page';
