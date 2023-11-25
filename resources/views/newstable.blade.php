@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>Cars List</title>
+  <title>News List</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
@@ -18,18 +18,20 @@
       <tr>
         <th>Title</th>
         <th>Content</th>
+        <th>Writer</th>
         <th>Published</th>
         <th>Edit</th>
 
       </tr>
     </thead>
     <tbody>
-        @foreach($cars as $car)
+        @foreach($news as $newz)
       <tr>
-        <td>{{$car->cartitle}}</td>
-        <td>{{$car->description}}</td>
-        <td>{{$car->published? 'Yes ✅':'No ❌'}}</td>
-        <td><a href="editcar/{{$car->id}}">Edit</td>
+        <td>{{$newz->title}}</td>
+        <td>{{$newz->content}}</td>
+        <td>{{$newz->writer}}</td>
+        <td>{{$newz->published? 'Yes ✅':'No ❌'}}</td>
+        <td><a href="editnews/{{$newz->id}}">Edit</td>
 
       </tr>
       @endforeach

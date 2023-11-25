@@ -23,9 +23,17 @@ Route::get('/', function () {
 Route::get('test', function () {
     return 'Welcome To My First Route';
 });
+//.................................DAY 5 TASK........................................
+Route::put('updatenews/{id}',[NewsController::class,'update'])->name('updatenews');
+Route::get('editnews/{id}',[NewsController::class,'edit']);
+Route::get('newstable',[NewsController::class,'index']);
+
 
 //.................................day 5 practice....................................
+Route::put('updatecar/{id}',[CarController::class,'update'])->name('updatecar');
+Route::get('editcar/{id}',[CarController::class,'edit']);
 Route::get('cars',[CarController::class,'index']);
+
 
 //.................................DAY 4 TASK........................................
 Route::get("news",[NewsController::class,'index']);
@@ -50,9 +58,9 @@ Route::POST('receive',function () {
 
 
 //.................................... day3 practice......................
-Route::fallback(function () {
+/*Route::fallback(function () {
     return redirect('/');
-});
+});*/
 Route::get('cv',function () {
     return view('cv');
 }); 

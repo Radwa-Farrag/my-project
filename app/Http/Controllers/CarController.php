@@ -31,10 +31,20 @@ class CarController extends Controller
     public function store(Request $request)
     {
         //
-        $cars = new car;
+        /*$cars = new car;
         $cars->cartitle ="BMW";
         $cars->description ="Description Is Here";
         $cars->published =true;
+        $cars->save();
+        return "Car Data Added Successfully";*/
+        $cars = new car;
+        $cars->cartitle =$request->cartitle;
+        $cars->description =$request->description;
+        if(isset($request->published)){
+            $cars->published =true;
+        }else{
+            $cars->published =false;
+        }
         $cars->save();
         return "Car Data Added Successfully";
 
@@ -54,7 +64,9 @@ class CarController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        //return "Car Id Is ". $id;
+        $car = Car::findOrFail($id);
+        return view('updatecar',compact('car'));
     }
 
     /**
