@@ -23,6 +23,11 @@ Route::get('/', function () {
 Route::get('test', function () {
     return 'Welcome To My First Route';
 });
+
+//.................................day 6 practice....................................
+
+
+
 //.................................DAY 5 TASK........................................
 Route::put('updatenews/{id}',[NewsController::class,'update'])->name('updatenews');
 Route::get('editnews/{id}',[NewsController::class,'edit']);

@@ -26,7 +26,7 @@
       <div class="form-group">
         <label for="writer">Writer:</label>
         <textarea class="form-control" value= "{{$news->writer}}"name="writer" rows="5" id="writer">{{$news->writer}}</textarea>
-      </div>
+      </div> 
     <div class="checkbox">
       <label><input type="checkbox" name="remember" @checked($news->published)> Published</label>
     </div>
