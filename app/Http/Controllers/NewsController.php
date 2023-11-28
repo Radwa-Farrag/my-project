@@ -7,6 +7,7 @@ use App\Models\News;
 
 class NewsController extends Controller
 {
+    private $columns = ['title', 'content','writer' ];
     /**
      * Display a listing of the resource.
      */
@@ -49,7 +50,8 @@ class NewsController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $news = News::findOrFail($id);
+        return view('newsdetails',compact('news'));
     }
 
     /**
@@ -66,7 +68,10 @@ class NewsController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+    $data = $request->only($this->columns);
+    $data['published']=isset($request['published'])? true:false;
+    News::where('id', $id)->update($data);
+    return redirect('newstable');
     }
 
     /**
@@ -74,6 +79,7 @@ class NewsController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        News::where('id', $id)->delete();
+        return redirect('newstable');
     }
 }

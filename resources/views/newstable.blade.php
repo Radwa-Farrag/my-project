@@ -21,6 +21,9 @@
         <th>Writer</th>
         <th>Published</th>
         <th>Edit</th>
+        <th>Show</th>
+        <th>Delete</th>
+
 
       </tr>
     </thead>
@@ -32,7 +35,8 @@
         <td>{{$newz->writer}}</td>
         <td>{{$newz->published? 'Yes ✅':'No ❌'}}</td>
         <td><a href="editnews/{{$newz->id}}">Edit</td>
-
+        <td><a href="newsdetails/{{$newz->id}}">Show</td>
+        <td><a href="deletenews/{{$newz->id}}">Delete</td>
       </tr>
       @endforeach
     </tbody>

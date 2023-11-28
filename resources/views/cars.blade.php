@@ -20,6 +20,8 @@
         <th>Content</th>
         <th>Published</th>
         <th>Edit</th>
+        <th>Show</th>
+        <th>Delete</th>
 
       </tr>
     </thead>
@@ -30,6 +32,8 @@
         <td>{{$car->description}}</td>
         <td>{{$car->published? 'Yes ✅':'No ❌'}}</td>
         <td><a href="editcar/{{$car->id}}">Edit</td>
+        <td><a href="cardetails/{{$car->id}}">Show</td>
+        <td><a href="deletecar/{{$car->id}}">Delete</td>
 
       </tr>
       @endforeach

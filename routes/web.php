@@ -24,9 +24,15 @@ Route::get('test', function () {
     return 'Welcome To My First Route';
 });
 
+
+//.................................DAY 6 TASK........................................
+Route::get('newsdetails/{id}',[NewsController::class,'show'])->name('newsdetails');
+Route::get('deletenews/{id}',[NewsController::class,'destroy'])->name('deletenews');
+
+
 //.................................day 6 practice....................................
-
-
+Route::get('cardetails/{id}',[CarController::class,'show'])->name('cardetails');
+Route::get('deletecar/{id}',[CarController::class,'destroy'])->name('deletecar');
 
 //.................................DAY 5 TASK........................................
 Route::put('updatenews/{id}',[NewsController::class,'update'])->name('updatenews');
@@ -48,16 +54,17 @@ Route::get('news',function () {
 });
 
 
+
 //.................................day 4 practice.....................................
-Route::get('addcar',[CarController::class, 'store']);
+Route::get('addCar',[CarController::class, 'store'])->name('addCar');;
 //DAY 3 TASK
 Route::post("addCar",[ExampleController::class,'getData']);
 Route::view("addCar","addCar");
 
-/*Route::get('addcar',function () {
+Route::get('addcar',function () {
     return view('addCar');
 });
-Route::POST('receive',function () {
+/*Route::POST('receive',function () {
     return 'Data Received';
 })->name('receive');*/
 
