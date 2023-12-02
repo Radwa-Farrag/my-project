@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Http\RedirectResponse;
 use App\Models\Car;
 
 class CarController extends Controller
@@ -14,8 +15,10 @@ class CarController extends Controller
      */
     public function index()
     {
+       /* $cars = Car::get();
+        return view('cars',compact('cars'));*/
         $cars = Car::get();
-        return view('cars',compact('cars'));
+        return view('cars', compact('cars'));
     }
 
     /**
@@ -23,7 +26,8 @@ class CarController extends Controller
      */
     public function create()
     {
-        //
+        //return view('addCar');
+        return view('addCar');
     }
 
     /**
@@ -89,9 +93,9 @@ class CarController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(string $id) :RedirectResponse
     {
         Car::where('id', $id)->delete();
-        return'Deleted';
+        return redirect('cars');
     }
 }

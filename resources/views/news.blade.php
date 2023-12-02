@@ -16,11 +16,21 @@
     @csrf
     <div class="form-group">
       <label for="title">Title:</label>
-      <input type="text" class="form-control" id="title" placeholder="Enter title" name="title">
+      <input type="text" class="form-control" id="title" placeholder="Enter title" name="title" value="{{old('title')}}">
+      @error('title')
+      <div class="alert alert-warning" > 
+      {{ $message }}
+      </div>
+      @enderror
     </div>
     <div class="form-group">
         <label for="content">Content:</label>
         <textarea class="form-control" name="content" rows="5" id="content"></textarea>
+        @error('content')
+        <div class="alert alert-warning" > 
+        No Content Added
+      </div>
+        @enderror
       </div>
     <div class="form-group">
       <label for="price">Writer:</label>

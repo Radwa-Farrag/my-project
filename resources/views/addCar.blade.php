@@ -12,15 +12,11 @@
 
 <div class="container">
   <h2>Add Car</h2>
-  <form action="addCar" method="POST">
+  <form action="{{route('storeCar')}}" method="POST">
     @csrf
     <div class="form-group">
       <label for="title">Title:</label>
-      <input type="text" class="form-control" id="title" placeholder="Enter title" name="title">
-    </div>
-    <div class="form-group">
-      <label for="price">Price:</label>
-      <input type="number" class="form-control" id="price" placeholder="Enter Price" name="price">
+      <input type="text" class="form-control" id="cartitle" placeholder="Enter title" name="cartitle">
     </div>
     <div class="form-group">
         <label for="description">Description:</label>
