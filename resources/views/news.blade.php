@@ -28,13 +28,18 @@
         <textarea class="form-control" name="content" rows="5" id="content"></textarea>
         @error('content')
         <div class="alert alert-warning" > 
-        No Content Added
+        {{ $message }}
       </div>
         @enderror
       </div>
     <div class="form-group">
       <label for="price">Writer:</label>
       <input type="text" class="form-control" id="writer" placeholder="Enter writer" name="writer">
+      @error('writer')
+        <div class="alert alert-warning" > 
+        {{ $message }}
+      </div>
+        @enderror
     </div>
      
     <div class="checkbox">

@@ -24,6 +24,10 @@ Route::get('test', function () {
     return 'Welcome To My First Route';
 });
 
+//.................................DAY 8 TASK........................................
+Route::get('showupload',[ExampleController::class,'showupload']);
+Route::post('upload',[ExampleController::class,'upload'])->name('upload');
+
 //.................................DAY 7 TASK........................................
 Route::get('trashednews',[NewsController::class,'trashed']);
 Route::get('restorenews/{id}',[NewsController::class,'restore']);

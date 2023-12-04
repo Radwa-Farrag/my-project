@@ -13,5 +13,15 @@ class ExampleController extends Controller
     public function getData(Request $req){
         return $req->input();
     }*/
+    public function showupload(){
+        return view('upload');
+    }
 
+    public function upload(request $request){
+        $file_extension = $request->image->getClientOriginalExtension();
+        $file_name = time() . '.'. $file_extension;
+        $path ='assets/images';
+        $request->image->move($path, $file_name);
+        return'uploaded';
+    }
 }

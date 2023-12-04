@@ -44,13 +44,22 @@ class NewsController extends Controller
         }
         $news->save();
         return "News Data Added Successfully";*/
-        $data = $request->only($this->columns);
-        $data['published']=isset($request['published'])? true:false;
-        $request->validate([
+
+
+       /* $data = $request->only($this->columns);
+        $data['published']=isset($request['published'])? true:false;*/
+        
+        $message=[
+            'title.required'=>'Title Is Required',
+            'content.required'=>'There Is No Content',
+            'writer.required'=>'Add Writer Please',
+        ];
+        $data = $request->validate([
             'title'=>'required|string|max:10',
             'content'=>'required|string|max:100',
             'writer'=>'required|string',
-        ]);
+        ],$message);
+        $data['published']=isset($request['published'])? 1: 0;
         News::create($data);
         return redirect ('newstable');
 
