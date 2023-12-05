@@ -5,9 +5,12 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Http\RedirectResponse;
 use App\Models\News;
+use App\Traits\common;
 
 class NewsController extends Controller
 {
+    use common;
+
     private $columns = ['title', 'content','writer','published' ];
     /**
      * Display a listing of the resource.
@@ -121,6 +124,16 @@ class NewsController extends Controller
     {
         News::where('id', $id)->restore();
         return redirect('newstable');
+    }
+
+    public function upload(request $request)
+    {
+        //$file_extension = $request->image->getClientOriginalExtension();
+        //$file_name = time() . '.'. $file_extension;
+        //$path ='assets/images';
+        //$request->image->move($path, $file_name);
+        $y = $this->uploadFile($request->image,'assets/images');
+        return $y;
     }
     
 }
