@@ -61,7 +61,10 @@ class NewsController extends Controller
             'title'=>'required|string|max:10',
             'content'=>'required|string|max:100',
             'writer'=>'required|string',
+            'image'=>'required|mimes:png,jpg,jpeg|max:2048',
         ],$message);
+        $filename = $this->uploadFile($request->image,'assets/images');
+        $data['image']= $filename;
         $data['published']=isset($request['published'])? 1: 0;
         News::create($data);
         return redirect ('newstable');

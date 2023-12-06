@@ -28,6 +28,7 @@ Route::get('test', function () {
 Route::get('showupload',[ExampleController::class,'showupload']);
 Route::post('upload',[ExampleController::class,'upload'])->name('upload');
 
+
 //.................................DAY 7 TASK........................................
 Route::get('trashednews',[NewsController::class,'trashed']);
 Route::get('restorenews/{id}',[NewsController::class,'restore']);
@@ -47,6 +48,7 @@ Route::get('deletecar/{id}',[CarController::class,'destroy'])->name('deletecar')
 Route::put('updatenews/{id}',[NewsController::class,'update'])->name('updatenews');
 Route::get('editnews/{id}',[NewsController::class,'edit']);
 Route::get('newstable',[NewsController::class,'index']);
+Route::get("editnews",[NewsController::class,'edit']);
 
 
 //.................................day 5 practice....................................

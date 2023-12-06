@@ -12,7 +12,7 @@
 
 <div class="container">
   <h2>Update News</h2>
-  <form action="{{ route('updatenews',$news->id) }}" method="POST">
+  <form action="{{ route('updatenews',$news->id) }}" method="POST" enctype="multipart/form-data">
     @csrf
     @method('put')
     <div class="form-group">
@@ -27,6 +27,17 @@
         <label for="writer">Writer:</label>
         <textarea class="form-control" value= "{{$news->writer}}"name="writer" rows="5" id="writer">{{$news->writer}}</textarea>
       </div> 
+      <div class="form-group">
+      <label for="price">Image:</label>
+      <input type="file" class="form-control" id="image" value="{{$news->image}}" name="image">
+      <img src="../assets/images/{{$news->image}}" alt="{{$news->title}}" style="width:300px;">
+      @error('image')
+        <div class="alert alert-warning" > 
+        {{ $message }}
+      </div>
+        @enderror
+    </div>
+    
     <div class="checkbox">
       <label><input type="checkbox" name="published" @checked($news->published)> Published</label>
     </div>

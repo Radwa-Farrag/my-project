@@ -13,6 +13,7 @@ class News extends Model
         'title',
         'content',
         'writer',
-        'published'
+        'published',
+        'image'
         ];
 }
