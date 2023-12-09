@@ -24,4 +24,13 @@ class ExampleController extends Controller
         $request->image->move($path, $file_name);
         return'uploaded';
     }
+
+    public function place(){
+    return view ('place');
+}
+
+public function blog(){
+    return view ('blog');
+}
+
 }

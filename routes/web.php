@@ -23,6 +23,10 @@ Route::get('/', function () {
 Route::get('test', function () {
     return 'Welcome To My First Route';
 });
+//.................................DAY 9 TASK.......................................
+Route::get('login',[ExampleController::class,'login']);
+Route::get('place',[ExampleController::class,'place']);
+Route::get('blog',[ExampleController::class,'blog']);
 
 //.................................DAY 8 TASK........................................
 Route::get('showupload',[ExampleController::class,'showupload']);

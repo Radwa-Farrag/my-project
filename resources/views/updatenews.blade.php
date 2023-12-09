@@ -37,7 +37,6 @@
       </div>
         @enderror
     </div>
-    
     <div class="checkbox">
       <label><input type="checkbox" name="published" @checked($news->published)> Published</label>
     </div>

@@ -11,7 +11,7 @@ class NewsController extends Controller
 {
     use common;
 
-    private $columns = ['title', 'content','writer','published' ];
+    private $columns = ['title', 'content','writer','published','image' ];
     /**
      * Display a listing of the resource.
      */
@@ -29,7 +29,7 @@ class NewsController extends Controller
     {
         //
     }
-
+//.............................................................................................................
     /**
      * Store a newly created resource in storage.
      */
@@ -67,11 +67,9 @@ class NewsController extends Controller
         $data['image']= $filename;
         $data['published']=isset($request['published'])? 1: 0;
         News::create($data);
-        return redirect ('newstable');
-
-        
+        return redirect ('newstable'); 
     }
-
+//.................................................................................................................
     /**
      * Display the specified resource.
      */
@@ -80,7 +78,7 @@ class NewsController extends Controller
         $news = News::findOrFail($id);
         return view('newsdetails',compact('news'));
     }
-
+//.....................................................................................................................
     /**
      * Show the form for editing the specified resource.
      */
@@ -89,21 +87,42 @@ class NewsController extends Controller
         $news = News::findOrFail($id);
         return view('updatenews',compact('news'));
     }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, string $id)
+//....................................................................................................................
+   
+// Update the specified resource in storage.
+     
+    /*public function update(Request $request, string $id)
     {
     $data = $request->only($this->columns);
     $data['published']=isset($request['published'])? true:false;
     News::where('id', $id)->update($data);    
     return redirect('newstable');
-    }
+    }*/
 
-    /**
-     * Remove the specified resource from storage.
-     */
+
+
+    public function update(Request $request, string $id)
+    {
+        $messages=$this->messages();
+    $data = $request->validate([
+        'title'=>'required|string|max:10',
+        'content'=>'required|string|max:100',
+        'writer'=>'required|string',
+        'image'=>'sometimes|mimes:png,jpg,jpeg|max:2048',
+    ],$messages);
+    $data['published']=isset($request->published);
+          //update image if new file selected
+          if ($request->hasFile('image')){
+            $filename = $this->uploadFile($request->image,'assets/images');
+            $data['image'] =$filename; 
+        }
+     News::where('id', $id)->update($data);    
+    return redirect('newstable');
+    }
+//..........................................................................................................
+   
+// Remove the specified resource from storage.
+
     public function destroy(string $id): RedirectResponse
     {
         News::where('id', $id)->delete();
@@ -128,7 +147,7 @@ class NewsController extends Controller
         News::where('id', $id)->restore();
         return redirect('newstable');
     }
-
+//..................................................................................................................
     public function upload(request $request)
     {
         //$file_extension = $request->image->getClientOriginalExtension();
@@ -139,4 +158,15 @@ class NewsController extends Controller
         return $y;
     }
     
+
+//..............................................just new customised methods...........
+public function messages(){
+return[
+        'title'=>'required|string|max:10',
+        'content'=>'required|string|max:100',
+        'writer'=>'required|string',
+        'image'=>'required|mimes:png,jpg,jpeg|max:2048',
+
+];
+}
 }
